@@ -11,6 +11,8 @@ nav:
   - Lessons 2 extension task:
     - Multiple Deployments: lesson2-kubechaos-extra.md
   - lesson3-config-maps.md
+  - Lessons 3 extension task:
+    - Pod destroy surprise: lesson3-config-maps-extras.md
   - lesson4-helm.md
 theme: 
   name: material

@@ -118,7 +118,8 @@ Refresh your browser? What happens now? You will see the changes you made will b
 
 Here we are mounting a file as a volume into the pod. The file is being written by the values in the in the ConfigMap. When we change the values they are immediately picked up by the pod without it being restarted. If you open the `manifest.yml` and scroll to line 44 to 54 you will see:
 
-```   container:
+```
+      container:
             ...
         volumeMounts:
         - name: style-env

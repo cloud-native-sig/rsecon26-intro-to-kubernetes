@@ -17,11 +17,11 @@ It’s perfect for testing Kubernetes basics on **Minikube** or running locally 
 Before you start, you’ll need:
 
 1. **Container runtime** (choose one):
-
    * [Docker](https://docs.docker.com/get-docker/)
    * [Podman](https://podman.io/getting-started/installation)
 2. **[Minikube](https://minikube.sigs.k8s.io/docs/start/)** (for running in Kubernetes)
 3. **[kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)** (Kubernetes CLI)
+4. **[Helm](https://helm.sh/docs/intro/install/)** (Package manager for Kubernetes)
 
 ---
 
@@ -33,6 +33,7 @@ Before you start, you’ll need:
 * Podman: [https://podman.io/getting-started/installation#installing-on-windows](https://podman.io/getting-started/installation#installing-on-windows)
 * Minikube: [https://minikube.sigs.k8s.io/docs/start/#windows](https://minikube.sigs.k8s.io/docs/start/#windows)
 * kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
+* helm [https://helm.sh/docs/intro/install/#from-chocolatey-windows](https://helm.sh/docs/intro/install/#from-chocolatey-windows)
 
 #### **macOS**
 
@@ -40,6 +41,7 @@ Before you start, you’ll need:
 * Podman: [https://podman.io/getting-started/installation#installing-on-macos](https://podman.io/getting-started/installation#installing-on-macos)
 * Minikube: [https://minikube.sigs.k8s.io/docs/start/#macos](https://minikube.sigs.k8s.io/docs/start/#macos)
 * kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+* helm: [https://helm.sh/docs/intro/install/#from-homebrew-macos](https://helm.sh/docs/intro/install/#from-homebrew-macos)
 
 #### **Linux**
 
@@ -47,7 +49,7 @@ Before you start, you’ll need:
 * Podman: [https://podman.io/getting-started/installation#installing-on-linux](https://podman.io/getting-started/installation#installing-on-linux)
 * Minikube: [https://minikube.sigs.k8s.io/docs/start/#linux](https://minikube.sigs.k8s.io/docs/start/#linux)
 * kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-
+* helm: [https://helm.sh/docs/intro/install/#from-script](https://helm.sh/docs/intro/install/#from-script)
 ---
 
 ## ☸ Running on Minikube

@@ -27,8 +27,23 @@ h1 {color: teal}
 *18 Feb 2026, CR16-R80*
 <br>
 Lewis Sampson (DAFNI) and Piper Fowler-Wright (RFI)
+<br>
+
+<p><img src="./slide-assets/github-pages-qr.png" style="width:200;height:200;float:right" alt="github pages QR code"> https://cloud-native-sig.github.io/stfcfeb26-intro-to-kubernetes/ </p>
 
 ---
+
+# Housekeeping
+## Agenda
+1. Introductions
+1. Background and context
+1. Deploying the Kubechaos App
+1. Refreshment Break & Troubleshooting
+1. ConfigMaps and Helm Charts
+1. Summary, Q&A, Follow-up opportunities
+
+---
+
 # Why Kubernetes?
 
 Kubernetes is a powerful container orchestration platform that automates deployment, scaling, and management of containerized applications. There are other benefits that Kubernetes generally offers.
@@ -452,9 +467,9 @@ Return to the browser window/URL with the running application - on refresh you s
 ---
 # Lesson 3: Updating with ConfigMaps
 * In lesson 2 you learnt how to update the Kubechaos app by making changes to the source code and then easily redeploying the app.
-* In this lesson we will update the application without modifying the code using ConfigMaps
+* In this lesson we update the app without modifying the code using ConfigMaps
 
-### What is a ConfigMap ?
+### What is a ConfigMap?
 
 * It is a Kubernetes API object which stores data in key-value pairs.
 * Non-confidential data only
@@ -659,7 +674,8 @@ data:
 ```
 
 ---
-# Lesson 3: Pod destruction surprise
+# Lesson 3: Updating with ConfigMaps
+## Optional extra: Pod destruction surprise
 
 Enable the pod destruction surprise by setting the
 `ENABLE_POD_DESTROY` variable in `manifests.yaml`:
@@ -668,7 +684,7 @@ Enable the pod destruction surprise by setting the
         - name: ENABLE_POD_DESTROY
           value: "true"
 ```
-**Tip:** Watch the pods with `kubectl get pods -w`
+**Tip:** Watch the pods with `kubectl get pods -w` or the kubernetes Dashboard
 
 *Exercise:* Can you set this via the ConfigMap? What about changing the
 border style through `BORDER_STYLE`?
@@ -865,13 +881,26 @@ Everything you have learned today can be used in your own work. For further read
 
 
 ---
-# Cloud-Native SIG
-Was brought to you with support for the **Software Sustainability Institute**
-**Join us:**
+# Knowledge Exchange opportunities
+## Cloud Native SIG
+This workshop was brought to you by the Cloud-Native SIG, with support from the **Software Sustainability Institute** 
+
+&nbsp;&nbsp;&nbsp;**Join us:**
 - ✉️ cloudnative-sig@jiscmail.ac.uk
 - 🌐 cloudnative-sig.ac.uk
 
-<img src='slide-assets/SSI-LOGO.png' style="padding-top:100px" ></img>
+<img src='slide-assets/SSI-LOGO.png' ></img>
+
+---
+
+# Knowledge exchange opportunities
+## CAKE Fellowship
+Read more here - https://www.cake.ac.uk/ke-fellowships/cohort1
+<br>
+
+## SCD Kubernetes colaboration group
+Contact Lewis - lewis.sampson@stfc.ac.uk for more information.
+
 
 ---
 # Thanks for your participation

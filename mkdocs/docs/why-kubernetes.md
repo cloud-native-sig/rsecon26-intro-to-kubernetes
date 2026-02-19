@@ -2,7 +2,7 @@
 TL;DR
 
 Docker compose is recommended if you have a single project with a few services for a single host.
-The complexity of Kuberentes is recommened if you have more than one application that you want to scale of have in high availability. This tutorial will demonstrate some of these features of Kubernetes and whether you want to consider using it in your project.
+The complexity of Kubernetes is recommended if you have more than one application that you want to scale or have in high availability. This tutorial will demonstrate some of these features of Kubernetes and whether you want to consider using it in your project.
 
 A more in depth comparison is provided here:
 

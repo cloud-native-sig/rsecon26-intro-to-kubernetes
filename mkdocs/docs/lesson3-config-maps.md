@@ -3,7 +3,7 @@ In lesson 2 you learnt how to update the Kubechaos app by making changes to the 
 
 ## What is a ConfigMap
 
-A ConfigMap is a Kubernetes API object which stores data in key-value pairs. They are used for non-confidential data only, for managing confidential data you can use Secrets. Further reading on secrets can be found here. 
+A ConfigMap is a Kubernetes API object which stores data in key-value pairs. They are used for non-confidential data only, for managing confidential data you can use Secrets. Further reading on secrets can be found [here](https://kubernetes.io/docs/concepts/configuration/secret/). 
 
 Pods can use the information in ConfigMaps either as environmental variables or the ConfigMap can be mounted as a volume. In this tutorial we will go through both cases and how they can be applied. 
 
@@ -118,7 +118,8 @@ Refresh your browser? What happens now? You will see the changes you made will b
 
 Here we are mounting a file as a volume into the pod. The file is being written by the values in the in the ConfigMap. When we change the values they are immediately picked up by the pod without it being restarted. If you open the `manifest.yml` and scroll to line 44 to 54 you will see:
 
-```   container:
+```
+      container:
             ...
         volumeMounts:
         - name: style-env

@@ -43,6 +43,10 @@ Authors: Alex Lubbock<sup>1</sup>, Piper Fowler-Wright<sup>1</sup>, Lewis Sampso
 
 Online documentation: [https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/](https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/)
 
+<div style="position:absolute;right:225px;top:200px">
+<img src='slide-assets/github-pages-qr.png' width=300px></img>
+</div>
+
 ---
 
 # Why Kubernetes?
@@ -875,21 +879,24 @@ helm list -n my-mocktail
 
 # Using Kubernetes in your work
 
-Everything you have learned today can be used in your own work. For further reading on the requirements to scale to production 
-refer to the online docs:
+Everything you have learned today can be used in your own work. For further reading on the requirements to scale to production refer to the GitHub pages (*https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/*), and contributions are welcome in the form or Issues and PRs at:
 
-<img src='slide-assets/github-pages-qr.png' width=200px class=centered-image></img>
-*https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/*
-
+<div style="text-align: center; margin: 0; padding: 0;">
+  <img src="slide-assets/github-repo-qr.png"
+       width="250"
+       style="display: block; margin: 0 auto 2px auto;">
+  <a href="https://github.com/cloud-native-sig/rsecon26-intro-to-kubernetes"
+     style="display: block; margin: 0; padding: 0; line-height: 1;">
+    github.com/cloud-native-sig/rsecon26-intro-to-kubernetes
+  </a>
+</div>
 
 ---
 # Cloud-Native SIG
-Was brought to you with support for the **Software Sustainability Institute**
 **Join us:**
 - ✉️ cloudnative-sig@jiscmail.ac.uk
 - 🌐 cloudnative-sig.ac.uk
 
-<img src='slide-assets/SSI-LOGO.png' style="padding-top:100px" ></img>
 
 ---
 # Thanks for your participation

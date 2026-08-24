@@ -1,4 +1,4 @@
-site_name: STFC Feb 2026 Workshop - Deploying a Web Application with Kubernetes
+site_name: RSECon26 Workshop - Deploying a Web Application with Kubernetes
 nav:
 - index.md
 - Introduction:
@@ -23,7 +23,7 @@ theme:
   features: 
     - instant
   
-repo_url: https://github.com/cloud-native-sig/stfcfeb26-intro-to-kubernetes
+repo_url: https://github.com/cloud-native-sig/rsecon26-intro-to-kubernetes
 edit_uri: tree/main/tutorial
 
 

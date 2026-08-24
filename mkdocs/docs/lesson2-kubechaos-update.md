@@ -22,7 +22,7 @@ Your tasks:
 
 1. Add 2-3 of you own surprises with jokes or other HTML content
 2. Remove the original surprise elements
-3. Finally, locate the "KubeChaos @ STFCFeb26!" title and replace it with "<your-name\> @ STFCFeb26!"
+3. Finally, locate the "KubeChaos @ RSECon26!" title and replace it with "<your-name\> @ RSECon26!"
 
 
 > ⚠️  JavaScript Array Syntax:

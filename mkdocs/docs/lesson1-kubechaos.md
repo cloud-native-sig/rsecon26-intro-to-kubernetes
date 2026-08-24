@@ -7,8 +7,8 @@ concepts including pods, deployments, and services.
 ## Prerequisites 
 You will need a local clone of the Kubechaos repository:
 ```
-git clone https://github.com/cloud-native-sig/stfcfeb26-intro-to-kubernetes.git
-cd stfcfeb26-intro-to-kubernetes
+git clone https://github.com/cloud-native-sig/rsecon26-intro-to-kubernetes.git
+cd rsecon26-intro-to-kubernetes
 ```
 Check your cluster from the previous lesson is still running
 (`minikube start` if it is not):

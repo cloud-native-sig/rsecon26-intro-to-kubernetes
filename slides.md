@@ -24,23 +24,24 @@ h1 {color: teal}
 
 # Deploying a Web Application with Kubernetes
 ## A Cloud Native SIG Workshop
-*18 Feb 2026, CR16-R80*
-<br>
-Lewis Sampson (DAFNI) and Piper Fowler-Wright (RFI)
-<br>
+### RSECon26 Thursday 10th September
+Authors: Alex Lubbock<sup>1</sup>, Piper Fowler-Wright<sup>1</sup>, Lewis Sampson<sup>2</sup>, Tibor Auer<sup>3</sup>, Colin Sauzé<sup>4</sup>
 
-<p><img src="./slide-assets/github-pages-qr.png" style="width:200;height:200;float:right" alt="github pages QR code"> https://cloud-native-sig.github.io/stfcfeb26-intro-to-kubernetes/ </p>
+<sup>1</sup> *The Rosalind Franklin Institute*
+<sup>2</sup> *Science and Technology Facilities Council, Scientific Computing Division - DAFNI*
+<sup>3</sup> *University College London*
+<sup>4</sup> *The National Oceanography Centre*
 
 ---
 
-# Housekeeping
-## Agenda
-1. Introductions
-1. Background and context
+# In this Workshop
+1. Kubernetes Architecture  
 1. Deploying the Kubechaos App
-1. Refreshment Break & Troubleshooting
+1. Lunch Break
 1. ConfigMaps and Helm Charts
 1. Summary, Q&A, Follow-up opportunities
+
+Online documentation: [https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/](https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/)
 
 ---
 
@@ -874,33 +875,21 @@ helm list -n my-mocktail
 
 # Using Kubernetes in your work
 
-Everything you have learned today can be used in your own work. For further reading on the requirements to scale to production please see:
+Everything you have learned today can be used in your own work. For further reading on the requirements to scale to production 
+refer to the online docs:
 
-<img src='slide-assets/qr.png' width=200px class=centered-image></img>
-*https://github.com/cloud-native-sig/stfcfeb26-intro-to-kubernetes/*
+<img src='slide-assets/github-pages-qr.png' width=200px class=centered-image></img>
+*https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/*
 
 
 ---
-# Knowledge Exchange opportunities
-## Cloud Native SIG
-This workshop was brought to you by the Cloud-Native SIG, with support from the **Software Sustainability Institute** 
-
-&nbsp;&nbsp;&nbsp;**Join us:**
+# Cloud-Native SIG
+Was brought to you with support for the **Software Sustainability Institute**
+**Join us:**
 - ✉️ cloudnative-sig@jiscmail.ac.uk
 - 🌐 cloudnative-sig.ac.uk
 
-<img src='slide-assets/SSI-LOGO.png' ></img>
-
----
-
-# Knowledge exchange opportunities
-## CAKE Fellowship
-Read more here - https://www.cake.ac.uk/ke-fellowships/cohort1
-<br>
-
-## SCD Kubernetes colaboration group
-Contact Lewis - lewis.sampson@stfc.ac.uk for more information.
-
+<img src='slide-assets/SSI-LOGO.png' style="padding-top:100px" ></img>
 
 ---
 # Thanks for your participation

@@ -1,6 +1,6 @@
-# 📖 README — KubeChaos @ STFC 18th Feb 2026
+# 📖 README — KubeChaos @ RSECon26
 
-GitHub Pages - https://cloud-native-sig.github.io/stfcfeb26-intro-to-kubernetes/
+GitHub Pages - https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/
 
 ## 🎯 About
 
@@ -8,8 +8,7 @@ KubeChaos is a tiny Node.js single-page app that serves a **random surprise** ev
 
 It’s perfect for testing Kubernetes basics on **Minikube** or running locally in Docker/Podman.
 
-> If you are attending the workshop please make sure you follow the installs for Prerequisites and Install Links by OS. The rest of the README will be followed during the tutorial.
-> Full documentation can be found here: https://cloud-native-sig.github.io/stfcfeb26-intro-to-kubernetes/ 
+> If you are attending the workshop please make sure you complete the installations under the **Perquisites** section. The rest of the README will be covered during the workshop.
 ---
 
 ## 🛠 Prerequisites
@@ -20,7 +19,7 @@ Before you start, you’ll need:
    * [Docker](https://docs.docker.com/get-docker/)
    * [Podman](https://podman.io/getting-started/installation)
 2. **[Minikube](https://minikube.sigs.k8s.io/docs/start/)** (for running in Kubernetes)
-3. **[kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)** (Kubernetes CLI)
+3. **[kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)** (CLI for the Kubernetes API)
 4. **[Helm](https://helm.sh/docs/intro/install/)** (Package manager for Kubernetes)
 
 ---
@@ -29,7 +28,8 @@ Before you start, you’ll need:
 
 #### **Windows**
 
-* Docker Desktop: [https://docs.docker.com/desktop/setup/install/windows-install/](https://docs.docker.com/desktop/setup/install/windows-install/)
+* Docker Desktop: [https://docs.docker.com/desktop/setup/install/windows-install/](https://docs.docker.com/desktop/setup/install/windows-install/) (Recommended: enable **Settings > Resources WSL integration**)
+* Docker Engine inside WSL: [https://minikube.sigs.k8s.io/docs/tutorials/wsl_docker_driver/](https://minikube.sigs.k8s.io/docs/tutorials/wsl_docker_driver/)
 * Podman: [https://podman.io/getting-started/installation#installing-on-windows](https://podman.io/getting-started/installation#installing-on-windows)
 * Minikube: [https://minikube.sigs.k8s.io/docs/start/#windows](https://minikube.sigs.k8s.io/docs/start/#windows)
 * kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
@@ -38,6 +38,7 @@ Before you start, you’ll need:
 #### **macOS**
 
 * Docker Desktop: [https://docs.docker.com/desktop/setup/install/mac-install/](https://docs.docker.com/desktop/setup/install/mac-install/)
+* Docker through colima:    [https://colima.run/docs/installation/](https://colima.run/docs/installation/)
 * Podman: [https://podman.io/getting-started/installation#installing-on-macos](https://podman.io/getting-started/installation#installing-on-macos)
 * Minikube: [https://minikube.sigs.k8s.io/docs/start/#macos](https://minikube.sigs.k8s.io/docs/start/#macos)
 * kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
@@ -45,12 +46,16 @@ Before you start, you’ll need:
 
 #### **Linux**
 
-* Docker: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+* Docker Desktop: [https://docs.docker.com/desktop/setup/install/linux/](https://docs.docker.com/desktop/setup/install/linux/)
+* Docker Engine: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
 * Podman: [https://podman.io/getting-started/installation#installing-on-linux](https://podman.io/getting-started/installation#installing-on-linux)
 * Minikube: [https://minikube.sigs.k8s.io/docs/start/#linux](https://minikube.sigs.k8s.io/docs/start/#linux)
 * kubectl: [https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 * helm: [https://helm.sh/docs/intro/install/#from-script](https://helm.sh/docs/intro/install/#from-script)
 ---
+
+> You are now ready for the workshop. The following may provide a helpful
+> reference at a later date.
 
 ## ☸ Running on Minikube
 

@@ -24,7 +24,7 @@ h1 {color: teal}
 
 # Deploying a Web Application with Kubernetes
 ## A Cloud Native SIG Workshop
-*18 Feb 2026, CR16-R80*
+### RSECon26
 <br>
 Lewis Sampson (DAFNI) and Piper Fowler-Wright (RFI)
 <br>

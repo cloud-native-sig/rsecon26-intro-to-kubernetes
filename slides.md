@@ -2,35 +2,85 @@
 marp: true
 theme: default
 paginate: true
-header:
-  <img src='./mkdocs/docs/assets/CN-SIG-logo.png' width='200px' style='padding-left:1050px'></img>
+header: '<img src="./mkdocs/docs/assets/CN-SIG-logo.png" height="80px">'
+style: |
+  /* Define global background, subtle gradient, and layout framework */
+  section {
+    background: linear-gradient(135deg, #fdfbfb 0%, #e4f5f5 100%);
+    color: #000000;
+    padding: 50px;
+    position: relative;
+  }
+  
+  /* Create a left-side vertical accent border on every slide */
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(to bottom, #008080, #005555);
+  }
+  /* Style headings for crisp scannability */
+  h1 {
+    {color: #008080}
+    font-weight: 700;
+  }
+  h2 {
+    {color: #008080};
+  }
+
+  /* Title slide template - Invert colour */
+  section.title-slide::before {
+    content: none !important;
+  }
+  section.title-slide::header {
+    content: none !important;
+  }
+  section.Title {
+    background: linear-gradient(135deg, #008080 0%, #003d3d 100%) !important;
+    color: #ffffff;
+    font-size: 45px;
+    h1 {color: #ffffff;}
+  }
+
+  section ul, section ol {
+    font-size: 24px;
+    }
+  .centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  div.footnote {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 1em;
+  }
+  header {
+    display: flex;
+    padding-left:1000px;
+    justify-content:space-between;
+    align-items:flex-start;
+    width:100%;
+  }
+  /* Footer typography */
+  footer {
+    font-size: 0.55em;
+    color: #7f8c8d;
+    font-weight: 600;
+  }
+
 ---
-<style>
-
-section {
-  background: white;
-  color: black;
-  padding-top: 110px;
-}
-h1 {color: teal}
-
-.centered-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-</style>
 
 # Deploying a Web Application with Kubernetes
 ## A Cloud Native SIG Workshop
 ### RSECon26 Thursday 10th September
 Authors: Alex Lubbock<sup>1</sup>, Piper Fowler-Wright<sup>1</sup>, Lewis Sampson<sup>2</sup>, Tibor Auer<sup>3</sup>, Colin Sauzé<sup>4</sup>
-
-<sup>1</sup> *The Rosalind Franklin Institute*
-<sup>2</sup> *Science and Technology Facilities Council, Scientific Computing Division - DAFNI*
-<sup>3</sup> *University College London*
-<sup>4</sup> *The National Oceanography Centre*
+<div class="footnote"> <sup>1</sup> The Rosalind Franklin Institute, <sup>2</sup> UKRI STFC DAFNI, <sup>3</sup> University College London, <sup>4</sup> The National Oceanography Centre
+ </div>
 
 ---
 
@@ -472,9 +522,13 @@ Return to the browser window/URL with the running application - on refresh you s
 ---
 # Lesson 3: Updating with ConfigMaps
 * In lesson 2 you learnt how to update the Kubechaos app by making changes to the source code and then easily redeploying the app.
-* In this lesson we update the app without modifying the code using ConfigMaps
+* But what if you want to update the app without modifying the code using ConfigMaps.
+* We will cover two methods for updating the containers environment variables.
 
-### What is a ConfigMap?
+---
+
+# Lesson 3: Updating with ConfigMaps
+## What is a ConfigMap?
 
 * It is a Kubernetes API object which stores data in key-value pairs.
 * Non-confidential data only
@@ -484,6 +538,7 @@ Pods can use the information in ConfigMaps either as:
 * mounted as a volume.
 
 ---
+
 # Lesson 3: Updating with ConfigMaps
 ## Configuring the Style with Environmental variables
 
@@ -555,36 +610,37 @@ Change the following variables:
 >  - they can be in hex-RGB format e.g. #000000 or #0000ff
 >  - or they can be in css names e.g. black or blue
 
-Refresh your web browser. What has happened?
+Refresh your web browser. What has differences can you see?
 
 ---
 # Lesson 3: Updating with ConfigMaps
 You will have noticed that your changes have not been applied, the styling remains the same.
 
-To get the colours to change run the following:
+To get the colours to change, we need to recreate the pod. Run the following:
 ```
 kubectl rollout restart deployment kubechaos
 ```
-Refresh your web browser, what do you see now?
+Then refresh your web browser, what do you see now?
 
 ---
 # Lesson 3: Updating with ConfigMaps
-### Explanation
+## Explanation
 
 The variables that you edited in the ConfigMap are applied as **environmental variables**.
- To get the pod to pick up on its new environment it needs to be remade. The quickest way to restart everything is to use the `kubectl rollout restart` command we used above.
+ To get the pod to pick up on its new environment it needs to be remade. The quickest way to restart all the pods is to use the `kubectl rollout restart` command we used above.
 
- ---
- # Lesson 3: Updating with ConfigMaps
-We will now look at `manifest.yml`, lines 22-44. Here we can set the `env` section of the container with values from the ConfigMap:
+---
+
+# Lesson 3: Updating with ConfigMaps
+We can make this update more direct by looking at the `manifest.yml`, lines 22-44.
+
+We can set the `env` section of the container with live values from the ConfigMap, for example:
 
 ```
     spec:
       containers:
       - name: app
-        image: local/kubechaos:v1
-        ports:
-        - containerPort: 3000
+        ...
         env:
         - name: BG_COLOR
           valueFrom:
@@ -594,21 +650,23 @@ We will now look at `manifest.yml`, lines 22-44. Here we can set the `env` secti
      ...
 ```
 ---
+
 # Lesson 3: Updating with ConfigMaps
-In this section we injected variables from the ConfigMap into the pod as environmental variables to make changes without having to rebuild the image:
- * ideal for applications that read configuration through environment variables
- *  doesn't require file handling
+
+We have injected values from the ConfigMap into the pod as environmental variables to make changes without having to rebuild the image:
+ * Ideal for applications that read configuration through environment variables
+ * Doesn't require file handling
  * Requires restart for changes to take effect.
 
-Now we will look at mounting our ConfigMap as a volume. This method is used when applications are expecting **configuration files** rather than **environmental variables**.
+
+However, there are other ways to use ConfigMaps. We will look at mounting our ConfigMap as a volume.
 
 ---
 # Lesson 3: Updating with ConfigMaps
 
-Usually a website's style is configured through a `.css` file, rather than environmental variables.
+This method is used when applications are expecting **configuration files** rather than **environmental variables**. For example, Usually a website's style is configured through a `.css` file.
 
-Look at the ConfigMap either through the Minikube Dashboard or with:
-`kubectl describe configmap kubechaos-style`
+Look at the ConfigMap with: `kubectl describe configmap kubechaos-style`
 There is a definition of a css file :
 
 ```
@@ -640,7 +698,7 @@ Here we are mounting a file as a volume into the pod. The file is being written 
 ---
 # Lesson 3: Updating with ConfigMaps
 
-Open the `manifest.yml` and scroll to line 44 to 54:
+We can check the explanation by opening the `manifest.yml` and scroll to line 44 to 54:
 
 ```
         volumeMounts:
@@ -656,11 +714,11 @@ Open the `manifest.yml` and scroll to line 44 to 54:
               path: "style.css"
 ```
 
-This creates a volume called `style-env` and mounts it as a volume. This volume has the `style.css` file mounted on the path the application expects.
+We see that it creates a volume called `style-env` and mounts it as a volume. This volume has the `style.css` file mounted on the path the application expects.
 
 ---
 # Lesson 3: Updating with ConfigMaps
-To see the manifest of the original ConfigMap (before our edits), see `manifests.yml` line 73:
+We edited the configmap at the CLI, but we can see `manifests.yml` line 73 of for the original ConfigMap:
 
 ```
 apiVersion: v1
@@ -670,17 +728,17 @@ metadata:
 data:
   bg_color:  white
   font_color: black
-...
-
+  ...
   style.css: |
     body { font-family: 'sans-serif';
-   ...
-           }
+           ...
 ```
+
+For version control, we should edit and apply the manifest file. 
 
 ---
 # Lesson 3: Updating with ConfigMaps
-## Optional extra: Pod destruction surprise
+## Independent extra: Pod destruction surprise
 
 Enable the pod destruction surprise by setting the
 `ENABLE_POD_DESTROY` variable in `manifests.yaml`:
@@ -691,8 +749,8 @@ Enable the pod destruction surprise by setting the
 ```
 **Tip:** Watch the pods with `kubectl get pods -w` or the kubernetes Dashboard
 
-*Exercise:* Can you set this via the ConfigMap? What about changing the
-border style through `BORDER_STYLE`?
+**Exercise:** Can you set this via the ConfigMap? What about changing the
+border style through `BORDER_STYLE` too?
 
 ---
 # Lesson 3: Updating Config Maps

@@ -49,7 +49,7 @@ Refresh your web browser, what do you see now?
 
 The variables that you edited in the ConfigMap are applied as environmental variables. To get the pod to pick up on it's new environment it needs to be remade. The quickest way to restart everything is to use the `kubectl rollout restart` command we used above.
 
-We will now look at `manifest.yml`. Please open up this file and scroll to the  block at line 22, to line 44. In this part of the deploymnet we set the `env` section of the container with values from the ConfigMap.
+We will now look at `manifest.yml`. Please open up this file and scroll to the  block at line 22, to line 44. In this part of the deployment we set the `env` section of the container with values from the ConfigMap.
 
 ```
     spec:
@@ -105,7 +105,7 @@ body { font-family: 'sans-serif';
 ```
 
 Now let's edit these variables in the ConfigMap keeping the structure of the file intact:
-> ⚠️  Note you will need to use specific variables for `font-family and `text-align`:
+> ⚠️  Note you will need to use specific variables for `font-family` and `text-align`:
 >  - `text-align` can be `center`, `right`, `left`
 >  - `font-family` has to belong to the websafe fonts e.g. `serif`, `arial`, `garamond`
 ```

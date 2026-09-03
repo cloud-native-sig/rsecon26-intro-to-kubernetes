@@ -275,8 +275,8 @@ namespaces to divide resources (e.g.,`dev`, `prod`)
 In this lesson we are going to launch our first application on Kubernetes!
 Make a local clone of Kubechaos repository:
 ```
-git clone https://github.com/cloud-native-sig/stfcfeb26-intro-to-kubernetes.git
-cd stfcfeb26-intro-to-kubernetes
+git clone https://github.com/cloud-native-sig/rsecon26-intro-to-kubernetes.git
+cd rsecon26-intro-to-kubernetes
 ```
 Check your cluster from the previous lesson is still running(`minikube start` if it is not):
 ```
@@ -778,7 +778,7 @@ In this lesson, we'll deploy a community application available as a Helm chart t
 > Like all code on the internet, Helm charts can contain malicious content.
 > Only install Helm charts from trusted sources. Vetting charts using Helm's
 > `template` and `verify` commands and other best practices
-> are discussed in the `sysdig` article in Further Reading in the documentation at: https://github.com/cloud-native-sig/stfcfeb26-intro-to-kubernetes
+> are discussed in the `sysdig` article in Further Reading in the documentation at: https://github.com/cloud-native-sig/rsecon26-intro-to-kubernetes
 
 ---
 # Lesson 4: Helm

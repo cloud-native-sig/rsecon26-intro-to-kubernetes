@@ -449,7 +449,7 @@ In this lesson, we'll explore redeployment in Kubernetes by applying changes to 
 
 ---
 # Lesson 2: Updating the Kubechaos App
-Open `image/app.js` and find the `suprises` variable (line 7):
+Open `image/app.js` and find the `suprises` variable (line 8):
 
 ```javascript
 const surprises = [
@@ -588,7 +588,7 @@ bg_color:
 ```
 ---
 # Lesson 3: Updating with ConfigMaps
-This ConfigMap controls the style of the website. .
+This ConfigMap controls the style of the website.
 
 Change the colors and border of the web application. To edit the ConfigMap:
 ```
@@ -597,7 +597,7 @@ kubectl edit configmap kubechaos-style
 
 ---
 # Lesson 3: Updating with ConfigMaps
-Change the following variables:
+Change the following variables to different colors or styles:
 ```
   bg_color:  white
   font_color: black
@@ -610,7 +610,7 @@ Change the following variables:
 >  - they can be in hex-RGB format e.g. #000000 or #0000ff
 >  - or they can be in css names e.g. black or blue
 
-Refresh your web browser. What has differences can you see?
+Refresh your web browser. What differences can you see?
 
 ---
 # Lesson 3: Updating with ConfigMaps
@@ -632,9 +632,9 @@ The variables that you edited in the ConfigMap are applied as **environmental va
 ---
 
 # Lesson 3: Updating with ConfigMaps
-We can make this update more direct by looking at the `manifest.yml`, lines 22-44.
+We explore these settings directly by looking at the `manifest.yml`, lines 22-44.
 
-We can set the `env` section of the container with live values from the ConfigMap, for example:
+We have set the `env` section of the container with live values from the ConfigMap:
 
 ```
     spec:
@@ -653,13 +653,13 @@ We can set the `env` section of the container with live values from the ConfigMa
 
 # Lesson 3: Updating with ConfigMaps
 
-We have injected values from the ConfigMap into the pod as environmental variables to make changes without having to rebuild the image:
+We inject values from the ConfigMap into the pod as environmental variables to make changes without having to rebuild the image:
  * Ideal for applications that read configuration through environment variables
  * Doesn't require file handling
  * Requires restart for changes to take effect.
 
 
-However, there are other ways to use ConfigMaps. We will look at mounting our ConfigMap as a volume.
+However, there are other ways to use ConfigMaps. Lets look at mounting our ConfigMap as a volume.
 
 ---
 # Lesson 3: Updating with ConfigMaps
@@ -679,7 +679,7 @@ body { font-family: 'sans-serif';
 ```
 ---
 # Lesson 3: Updating with ConfigMaps
-Now let's edit these variables in the ConfigMap keeping the structure of the file intact:
+Let's edit these variables in the ConfigMap keeping the structure of the file intact:
 ```
 kubectl edit configmap kubechaos-style
 ```
@@ -718,7 +718,7 @@ We see that it creates a volume called `style-env` and mounts it as a volume. Th
 
 ---
 # Lesson 3: Updating with ConfigMaps
-We edited the configmap at the CLI, but we can see `manifests.yml` line 73 of for the original ConfigMap:
+We edited the configmap at the CLI, but we can see `manifests.yml` line 73 of the original ConfigMap:
 
 ```
 apiVersion: v1
@@ -734,11 +734,11 @@ data:
            ...
 ```
 
-For version control, we should edit and apply the manifest file. 
+For consistent version control we should only apply edits through the manifest file. 
 
 ---
 # Lesson 3: Updating with ConfigMaps
-## Independent extra: Pod destruction surprise
+## Optional add-on: Pod destruction surprise
 
 Enable the pod destruction surprise by setting the
 `ENABLE_POD_DESTROY` variable in `manifests.yaml`:

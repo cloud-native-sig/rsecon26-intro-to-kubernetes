@@ -2,6 +2,8 @@
 
 GitHub Pages - https://cloud-native-sig.github.io/rsecon26-intro-to-kubernetes/
 
+> Revision of the CNSIG's RSECon25 session on Kubernetes and Web applications
+
 ## 🎯 About
 
 KubeChaos is a tiny Node.js single-page app that serves a **random surprise** every time you refresh — random facts, Kubernetes "jokes" (from ChatGPT!) and mini-games.

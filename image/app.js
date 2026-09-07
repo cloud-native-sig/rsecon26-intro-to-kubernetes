@@ -51,7 +51,7 @@ function renderPage(surpriseContent) {
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>KubeChaos @ STFCFeb26</title>
+  <title>KubeChaos @ RSECon26</title>
   <style>
     body { font-family: 'sans-serif'; text-align: center; margin-top: 5rem; background-color: ${backgroundColor};
     color: ${fontColor};}
@@ -61,7 +61,7 @@ function renderPage(surpriseContent) {
   <link rel="stylesheet" href="/style.css" >
 </head>
 <body>
-  <h1>KubeChaos @ STFCFeb26!</h1>
+  <h1>KubeChaos @ RSECon26!</h1>
   <p>Served by pod: <strong>${os.hostname()}</strong></p>
   <p>Every refresh brings a new surprise 🎲</p>
   <div id="playground">

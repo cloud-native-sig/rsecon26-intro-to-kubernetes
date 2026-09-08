@@ -1,4 +1,4 @@
-# Troubleshooting Minikube Installation on Ubuntu
+# Minikube Issues on Ubuntu / Linux
 
 Minikube has several virtualisation drivers it can use to run the underlying containers. On Ubuntu these include Docker, Podman, QEMU, Virtualbox and KVM2. 
 There is a complete list and descriptions available from [the Minikube driver docs](https://minikube.sigs.k8s.io/docs/drivers/).

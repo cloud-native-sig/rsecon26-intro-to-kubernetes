@@ -14,6 +14,8 @@ nav:
   - Lessons 3 extension task:
     - Pod destroy surprise: lesson3-config-maps-extra.md
   - lesson4-helm.md
+- Troubleshooting:
+  - ubuntu-minikube.md
 theme: 
   name: material
   palette:

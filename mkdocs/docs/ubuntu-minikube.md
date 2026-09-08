@@ -36,7 +36,7 @@ Ubuntu 22.04 users should use a different method such as Rootless Docker.
 
 ### Set Minikube to Rootless mode 
 
-To use either Podmand or Rootless Docker, Minikube needs to be set to rootless mode.
+To use either Podman or Rootless Docker, Minikube needs to be set to rootless mode.
 
 ```
 minikube config set rootless true

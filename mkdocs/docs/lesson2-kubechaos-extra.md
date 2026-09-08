@@ -1,6 +1,6 @@
 # Lesson 2 Extension Task: Multiple Deployments
 A Kubernetes cluster is not limited to running a single service or
-deployment. Let's try something a bit more advanced - running both
+deployment. Let's try something a bit more advanced: running both
 the original and your modified version of the kubechaos application
 at the same time, splitting traffic between them (single service).
 
@@ -127,7 +127,7 @@ kubectl get endpointslices
 > sessions in order to get served by the other pod. Keep
 > refreshing!
 
-## 🤔 Questions 
+## Questions 🤔
 - Why might you consistently hit the same pod even with multiple refreshes? 
 - If you have hundreds of users visiting your site, how does Kubernetes decide
   which pod serves each request?

@@ -20,15 +20,14 @@ const surprises = [
 ```
 Your tasks:
 
-1. Add 2-3 of you own surprises with jokes or other HTML content
+1. Locate the "KubeChaos @ RSECon26!" title and replace it with "<your-name\> @ RSECon26!"
 2. Remove the original surprise elements
-3. Finally, locate the "KubeChaos @ RSECon26!" title and replace it with "<your-name\> @ RSECon26!"
+3. Add 2-3 of you own surprises with jokes or other HTML content
 
 
-> ⚠️  JavaScript Array Syntax:
->
-> - Each element is wrapped in backticks `\` (multi-line strings)
-> - Elements are separated by commas
+!!! warning "JavaScript Array Syntax"
+    - Each element is a multi-line string wrapped in backticks \`
+    - Successive elements are separated by commas
 
 
 ### Building the New Image
@@ -63,18 +62,44 @@ Check when the deployment is complete:
 ```
 kubectl rollout status deployment kubechaos
 ```
-> 💡 If we had simply modified and rebuilt the `v1` image,
-> it would have been sufficient to restart the
-> deployment (`kubectl rollout restart deploy kubechaos`).
-> Since we changed the manifest, however, a redeployment 
-> is necessary. 
+!!! tip
+    If we had simply modified and rebuilt the `v1` image,
+    it would have been sufficient to restart the
+    deployment (`kubectl rollout restart deploy kubechaos`).
+    Since we changed the manifest, however, a redeployment 
+    is necessary. 
 
 ### Test Your Changes
-Return to the browser window/URL with the running application -
-on refresh you should now see your own jokes and custom title!
+Return to the browser window/URL with the running application&mdash;on
+refresh you should now see your own jokes and custom title!
 
-> If you closed the browser window, you can get the service
-> URL from `minikube service kubechaos-svc --url` as before.
+!!! info
+    If you closed the browser window, you can get the service
+    URL from `minikube service kubechaos-svc --url` as before.
+
+## Undoing Rollouts
+By default, Kubernetes retains memory of the last 3 revisions of a deployment
+If you've made a mistake, you can revert to the *previous* revision (in this case
+where `image: lcoal/kubechaos:v1`) with
+```
+kubectl rollout undo deployment kubechaos
+```
+If you want to view all revisions in the history:
+```
+kubectl rollout history deployment kubechaos
+```
+You can then inspect a particular revision like
+```
+kubectl rollout history deployment kubechaos --revision=2
+```
+and further rollback to that one with
+```
+kubectl rollout undo deployment kubechaos --to-revision=2
+```
+
+!!! tip
+    Specify a higher `revisionHistoryLimit` in the deployment manifest if you
+    want to increase the number of revisions Kubernetes remembers.
 
 ## 📚 Further Reading
 

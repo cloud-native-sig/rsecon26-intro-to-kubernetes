@@ -24,6 +24,10 @@ theme:
   logo: assets/CN-SIG-logo.png
   features: 
     - instant
+
+markdown_extensions:
+  - admonition
+  - md_in_html
   
 repo_url: https://github.com/cloud-native-sig/rsecon26-intro-to-kubernetes
 edit_uri: tree/main/tutorial

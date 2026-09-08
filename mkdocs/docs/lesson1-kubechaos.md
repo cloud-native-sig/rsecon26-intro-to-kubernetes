@@ -20,10 +20,14 @@ minikube status
 Kubernetes runs applications in containers, but does not handle building
 container images itself&mdash;it expects images to already be available.
 Minikube provides a convenient build tool that allows us to
-create a Docker image (defined in `image/Dockerfile`) for the Kubechaos app:
+create a Docker image for the Kubechaos App: 
 ```
 minikube image build -t local/kubechaos:v1 image
 ```
+In this command the last `image` refers to the build context, i.e.,
+the `./image` directory which contains both the code for Kubechaos (a Node.js
+application) as well as a Dockerfile, `image/Dockerfile`.
+
 The built image is stored in minikube's local registry, identified
 in the output of the command `minikube image ls`
 by the tag `local/kubchaos:v1`.
@@ -34,7 +38,7 @@ resources in a cluster. If you open `deployment/manifests.yaml`,
 you'll see it contains definitions for:
 
 - A Deployment (manages pods)
-- A Service (provides networking)
+- A Service (provides a stable network endpoint)
 - A ConfigMap (explored in lesson 3)
 
 Notice the image tag `local/kubechaos:v1` in the manifest
@@ -90,14 +94,15 @@ the container:
 
 Server running at http://localhost:3000
 ```
-Note that the URL here refers to an internal port of the container, which
-is different from the port the minikube proxy exposed on 
-your localhost for accessing the service from outside the cluster.
-In general
-Kubernetes keeps the internal container network separate from
-external access, and you need to explicitly configure how services can be
-reached from outside the cluster (see [Ingress](#ingress-production-ready-external-access)
-below).
+!!! tip
+    The `localhost:3000` URL refers to an internal port of the container, which
+    is different from the port the minikube proxy exposed on 
+    your localhost for accessing the service from outside the cluster.
+    In general
+    Kubernetes keeps the internal container network separate from
+    external access, and you need to explicitly configure how services can be
+    reached from outside the cluster (see [Services: Network Access](#services-network-access)
+    below).
 
 ## Deletion Experiment
 Let's see what happens if we delete the pod from the cluster:
@@ -125,8 +130,8 @@ which are responsible for creating the individual pods. In summary,
 
 **Deployment → ReplicaSet → Pods**
 
-Where *Deployment* defines the target state, *ReplicaSet*
-ensures the correct number of replicas are alive, and *Pods* are the
+Where Deployment defines the target state, ReplicaSet
+ensures the correct number of replicas are alive, and Pods are the
 actual App instances.
 
 ### Self-healing and Scaling
@@ -151,7 +156,56 @@ In the first terminal you will see in two additional replicas being spun up
 immediately! You can verify the new state with `kubectl get deployment`
 or by reviewing the Deployments/Pods page in the Web Dashboard.
 
-## Ingress: Production-Ready External Access
+### Labels and Selectors
+
+In `deployment/manifests.yaml`, the label `app: kubechaos` appears three
+times. The first, set in the metadata of the Deployment itself, is 
+organisational: it lets you (or other tooling) select the Deployment as an
+object, e.g., `kubectl get deployments -l app=kubechaos`.
+
+The other two are functional and linked. Within the Deployment's spec, the
+`selector` field is the query the Deployment controller uses to find which
+Pods it owns, so it can create or remove Pods as needed to match the target
+number of replicas (one, in this case). It looks for a match on the
+`app: kubechaos` label, which is set correspondingly in the metadata of the
+Pod template and assigned to every Pod created for this Deployment.
+(In practice, the Deployment delegates this to an intermediate ReplicaSet,
+which it creates and manages Pods using the same selector.)
+
+!!! tip
+    Both the *key* and *value* of a label are variables&mdash;`app`
+    carries no special meaning to Kubernetes. We could equally use
+    `myapp: kubechaos`, and multiple labels can be specified where useful. The
+    `app` convention is widely followed because many tools expect it, following
+    Kubernetes' own [recommended labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/).
+
+## Services: Network Access
+
+By default, Kubernetes does not restrict network access by port, so any Pod
+can reach any port on another Pod's IP address, whether or not that port is
+declared anywhere (`containerPort: 3000` field in the Deployment's Pod
+template is documentation only).
+
+The role of the *Service* is to give the port a stable, easily accessible
+network identity. Specifically, the `type: NodePort` opens the chosen port on *every*
+node in the cluster, not just the node the Pod happens to be running on.
+Traffic arriving at `<node-ip>:<nodePort>` is then routed by `kube-proxy` to
+a matching Pod, even if that Pod lives on a different node. 
+
+For our minikube cluster, "the node" is the minikube VM or container itself,
+therefore the further `minikube service kubechaos-svc` command is required to
+bridge from the minikube node out to your actual device, as was done above.
+Exposing a Service to the public internet via an
+Ingress controller is a further step again (see below), beyond the
+scope of this tutorial.
+
+!!! tip Network with Service
+    You can access a Pod's ports directly via its IP, without a Service,
+    from anywhere else inside the cluster. However, Pod IPs are
+    ephemeral, i.e., will change whenever a Pod is destroyed and recreated,
+    so a Service is what gives you a stable address to depend on. 
+
+### Ingress: Production-Ready External Access
 In networking terminology, "ingress" refers to incoming traffic, and "egress"
 outgoing traffic. For infrastructure and cloud computing, ingress describes
 how external clients access services running inside a protected network.
@@ -167,7 +221,7 @@ External Client → Ingress Controller + Rules → Service → Pod
 ```
 where the Service groups pods running your application. 
 
-## Beyond minikube service
+### Beyond minikube service
 Above, we used the `minikube service` command, which
 creates a temporary proxy from your local machine to the application
 containers.
